@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Dashboard() {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    const savedTodos = JSON.parse(localStorage.getItem('todos')) || [];
+    const savedTodos = JSON.parse(localStorage.getItem("todos")) || [];
     setTodos(savedTodos);
   }, []);
 
@@ -18,17 +18,30 @@ export default function Dashboard() {
           <p className="text-center">Es gibt keine Todos.</p>
         ) : (
           todos.map((todo, index) => (
-            <li key={index} className="list-group-item shadow-sm mb-2 d-flex justify-content-between align-items-center">
+            <li
+              key={index}
+              className="list-group-item shadow-sm mb-2 d-flex justify-content-between align-items-center"
+            >
               <div>
                 <h4>{todo.name}</h4>
                 <p>{todo.description}</p>
-                <p className="text-muted">Fällig am: {new Date(todo.dueDate).toLocaleDateString()}</p>
+                <p className="text-muted">
+                  Fällig am: {new Date(todo.dueDate).toLocaleDateString()}
+                </p>
               </div>
 
               <Link
-                to={`/edit/${index}`} 
+                to="/new"
+                className="btn btn-success position-fixed"
+                style={{ bottom: 10, right: 30, zIndex: 1000 }}
+              >
+                Neues To-Do erstellen
+              </Link>
+
+              <Link
+                to={`/edit/${index}`}
                 className="btn btn-success"
-                style={{ zIndex: 1000 }}
+               
               >
                 Edit
               </Link>
@@ -36,14 +49,6 @@ export default function Dashboard() {
           ))
         )}
       </ul>
-
-      <Link
-        to="/new"
-        className="btn btn-success position-fixed"
-        style={{ bottom: 10, right: 30, zIndex: 1000 }}
-      >
-        Neues To-Do erstellen
-      </Link>
     </div>
   );
 }

@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Dashboard from "./Dashboard.jsx";
 import New from "./New.jsx";
 import Impressum from "./Impressum.jsx";
-
+import Edit from "./Edit.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -14,6 +14,7 @@ createRoot(document.getElementById("root")).render(
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/new" element={<New />} />
+          <Route path="/edit/:index" element={<Edit />} />
         </Routes>
         <Impressum />
       </>

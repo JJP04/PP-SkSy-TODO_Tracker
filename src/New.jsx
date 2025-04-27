@@ -7,6 +7,7 @@ export default function New() {
   const [dueDate, setDueDate] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate(); // Zum Navigieren zurück zur To-Do Liste
+  const maxLength = 160;
 
   const handleSubmit = () => {
     if (!name || !dueDate) {
@@ -49,7 +50,11 @@ export default function New() {
           className="form-control"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          maxLength={maxLength} // Maximal 160 Zeichen
         />
+        <div className="form-text">
+          {name.length}/{maxLength} Zeichen
+        </div>
       </div>
 
       <div className="mb-3">
@@ -69,7 +74,7 @@ export default function New() {
 
       <button
         className="btn btn-primary position-fixed"
-        style={{ bottom: 230, right: 35, zIndex: 1000 }}
+        style={{ bottom: 200, right: 35, zIndex: 1000 }}
         onClick={handleSubmit}
       >
         To-Do hinzufügen
