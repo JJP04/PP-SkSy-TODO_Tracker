@@ -74,7 +74,7 @@ export default function New() {
 
       <button
         className="btn btn-primary position-fixed"
-        style={{ bottom: 200, right: 35, zIndex: 1000 }}
+        style={{ bottom: 200, right: 80, zIndex: 1000 }}
         onClick={handleSubmit}
       >
         To-Do hinzufügen
@@ -83,8 +83,8 @@ export default function New() {
       <div className="d-flex justify-content-between mt-4">
         <Link
           to="/"
-          className="btn btn-secondary position-fixed"
-          style={{ bottom: 70, right: 30, zIndex: 1000 }}
+          className="btn btn-success position-fixed"
+          style={{ bottom: 10, right: 80, zIndex: 1000 }}
         >
           Zurück zur Übersicht
         </Link>
